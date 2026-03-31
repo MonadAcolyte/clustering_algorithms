@@ -1,6 +1,6 @@
 # TODO
 
-## Submission Reqirements
+## Submission Requirements
 
 ### Q1
 - Silhouette Analysis Plot []
