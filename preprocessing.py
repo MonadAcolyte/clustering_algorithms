@@ -52,3 +52,5 @@ if __name__ == "__main__":
 
     cleaned.to_csv("data/data_train_cleaned.csv", index=False)
     print("\nSaved to data/data_train_cleaned.csv")
+
+# Locally I kept the data on a separate directory... This file won't be run directly, so it should be OK.
