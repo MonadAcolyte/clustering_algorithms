@@ -1,0 +1,1 @@
+rm data/data_train_cleaned.csv && python3 preprocessing.py

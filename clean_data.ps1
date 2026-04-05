@@ -1,0 +1,1 @@
+Remove-Item data/data_train_cleaned.csv; if ($?) { python3 preprocessing.py }
