@@ -1,3 +1,5 @@
+# NOTE: This crashes if run alone, remember to use the "run" shell scripts that match the pdf instructions
+
 # Libraries
 import sys
 import csv
@@ -43,7 +45,8 @@ def silhouette_analysis(matrix, k_range: range) -> dict:
 
     # Plot
     plt.figure(figsize=(8, 4))
-    plt.plot(list(scores.keys()), list(scores.values()), marker="o")
+    plt.plot(list(scores.keys()), list(scores.values()), marker="o", color = "darkmagenta")
+    plt.grid(True, alpha = 0.5)
     plt.xlabel("K")
     plt.ylabel("Silhouette Coefficient")
     plt.title("Silhouette Analysis")
