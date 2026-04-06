@@ -1,0 +1,70 @@
+TF-IDF & K-Means
+
+n_components = 100:
+
+LSA: 100 components explain 32.51% of variance
+K=2: silhouette score = 0.0220
+K=3: silhouette score = 0.0255
+K=4: silhouette score = 0.0340
+K=5: silhouette score = 0.0346
+K=6: silhouette score = 0.0449
+K=7: silhouette score = 0.0499
+K=8: silhouette score = 0.0530
+K=9: silhouette score = 0.0595
+K=10: silhouette score = 0.0639
+
+n_components = 50:
+
+LSA: 50 components explain 20.97% of variance
+K=2: silhouette score = 0.0354
+K=3: silhouette score = 0.0378
+K=4: silhouette score = 0.0497
+K=5: silhouette score = 0.0572
+K=6: silhouette score = 0.0673
+K=7: silhouette score = 0.0762
+K=8: silhouette score = 0.0803
+K=9: silhouette score = 0.0858
+K=10: silhouette score = 0.0904
+
+n_components = 25
+
+LSA: 25 components explain 13.26% of variance
+K=2: silhouette score = 0.0943
+K=3: silhouette score = 0.0675
+K=4: silhouette score = 0.0750
+K=5: silhouette score = 0.0996
+K=6: silhouette score = 0.1106
+K=7: silhouette score = 0.1306
+K=8: silhouette score = 0.1420
+K=9: silhouette score = 0.1540
+K=10: silhouette score = 0.1606
+Saved silhouette_plot.png
+
+n_components = 10:
+
+LSA: 10 components explain 6.89% of variance
+K=2: silhouette score = 0.1734
+K=3: silhouette score = 0.1669
+K=4: silhouette score = 0.1998
+K=5: silhouette score = 0.2028
+K=6: silhouette score = 0.2342
+K=7: silhouette score = 0.2597
+K=8: silhouette score = 0.2843
+K=9: silhouette score = 0.2977
+K=10: silhouette score = 0.3097
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{n\_components} & \textbf{Variance Explained} & \textbf{Best Silhouette (K=10)} \\
+\hline
+100 & 32.51\% & 0.0639 \\
+50  & 20.97\% & 0.0904 \\
+25  & 13.26\% & 0.1606 \\
+10  & 6.89\%  & 0.3097 \\
+\hline
+\end{tabular}
+\caption{LSA components vs. explained variance and silhouette score}
+\label{tab:lsa_components}
+\end{table}

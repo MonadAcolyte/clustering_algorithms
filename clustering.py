@@ -10,6 +10,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from sklearn.decomposition import TruncatedSVD # (LSA implementation)
+from sklearn.preprocessing import normalize
 
 # Import the preprocessing modules
 from preprocessing import load_data, clean_data
@@ -30,7 +31,7 @@ def vectorise(sentences: list) -> tuple:
     return matrix, vectoriser
 
 # LSA
-def apply_lsa(matrix, n_components: int = 100) -> np.ndarray:
+def apply_lsa(matrix, n_components: int = 10) -> np.ndarray: # n_component decreased
     """Reduce TF-IDF matrix dimensions using LSA."""
     lsa = TruncatedSVD(n_components=n_components, random_state=42)
     reduced_matrix = lsa.fit_transform(matrix)
@@ -54,13 +55,16 @@ matrix, vectoriser = vectorise(vectorised_sentences)
 # Apply LSA
 matrix = apply_lsa(matrix)
 
+# Apply L2 normalisation
+matrix = normalize(matrix)
+
 # Silhouette analysis (w/ K means)
 def silhouette_analysis(matrix, k_range: range) -> dict:
     """Compute silhouette scores for each K and plot the results."""
     scores = {}
     scores[1] = 0 # Obv. for k=1 the s. coeff.'s value is 0
     for k in k_range:
-        kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+        kmeans = KMeans(n_clusters=k, random_state=42, n_init=25) # n_init increased
         labels = kmeans.fit_predict(matrix)
         score = silhouette_score(matrix, labels)
         scores[k] = score
