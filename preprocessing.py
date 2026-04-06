@@ -18,7 +18,7 @@ def load_data(filepath: str) -> pd.DataFrame:
 
 
 def clean_sentence(text: str) -> str:
-    """Clean a single sentence."""
+    """Clean a single sentence. Called the clean_data() function"""
     # Remove literal \n escape sequences (e.g. \\n\\n in row 11)
     text = text.replace("\\n", " ")
     # Remove real newline/carriage return characters (\r\n Windows line endings)
@@ -31,13 +31,22 @@ def clean_sentence(text: str) -> str:
     text = text.lower()
     return text
 
+# NOTE: this function ~ deletes ~ the rows, a function that ~ relables them to one is just below.
+#def clean_data(df: pd.DataFrame) -> pd.DataFrame:
+#    """Apply cleaning to the Sentence column."""
+#    df = df.copy()
+#    df["Sentence"] = df["Sentence"].astype(str).apply(clean_sentence)
+#    # Drop rows where cleaning left an empty sentence
+#    df = df[df["Sentence"].str.len() > 0].reset_index(drop=True)
+#    return df
 
 def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     """Apply cleaning to the Sentence column."""
     df = df.copy()
     df["Sentence"] = df["Sentence"].astype(str).apply(clean_sentence)
-    # Drop rows where cleaning left an empty sentence
-    df = df[df["Sentence"].str.len() > 0].reset_index(drop=True)
+    # Replace empty sentences with a single space rather than dropping them
+    # This preserves row order so label.txt aligns with the original dataset
+    df["Sentence"] = df["Sentence"].replace("", "empty")
     return df
 
 
