@@ -3,9 +3,9 @@
 ## Submission Requirements
 
 ### Q1
-- Silhouette Analysis Plot []
-    - .png file []
-    - K values ranging 1-10 []
+- Silhouette Analysis Plot [x]
+    - .png file [x]
+    - K values ranging 1-10 [x] ~ 2-10?
 
 - Zipped code []
     - preprocessing.py
@@ -13,7 +13,7 @@
         - must also output 'label.txt'
     - requirements.txt
 
-- Cluster Labels File label.txt []
+- Cluster Labels File label.txt [x]
 
 - Reports explaining both python files (.pdf or .txt)
 
