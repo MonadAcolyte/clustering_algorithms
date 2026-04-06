@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%
+% Basic packages %
+%%%%%%%%%%%%%%%%%%
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage[stretch = 25, shrink = 25, tracking=true, letterspace=30]{microtype}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ %total={150mm,257mm},
+ left=25mm,
+ right=25mm,
+ top=15mm,
+ } % Page Layout
+\usepackage[dvipsnames]{xcolor} % Colour
+\usepackage{amsmath} % Maths
+
+%%%%%%%%%%%%%%%%%%%
+% Tables, figures %
+%%%%%%%%%%%%%%%%%%%
+
+\usepackage{float}
+\usepackage{graphicx} % Imgages, figures
+\graphicspath{{./figures/}} % Set figure path
+
+\usepackage{booktabs} % Pretty tables
+
+%%%%%%%%%%%%%
+% Citations %
+%%%%%%%%%%%%%
+
+\usepackage[
+    backend=biber,
+    style=apa,
+    sortlocale=de_DE,
+    natbib=true,
+    url=false, 
+    doi=true,
+    eprint=false
+]{biblatex}
+
+\addbibresource{ASSIGNMENT_1.bib} %Imports bibliography file
+\usepackage{csquotes} % used for block quotes
+
+%%%%%%%%%
+% Fonts %
+%%%%%%%%%
+
+%%% Helvetica:
+%\usepackage[scaled=0.95]{helvet} % Imports Helvetica, which is similar to Arial
+%\renewcommand{\rmdefault}{phv} % Use Helvetica
+
+%%% Atkinson Hyperlegible, nerdy font 
+%\usepackage[sfdefault]{atkinson} %% Option 'sfdefault' if the base
+%% font of the document is to be sans serif.
+%\usepackage[T1]{fontenc}
+
+%%%%%%%%%%%%%%%%%%
+% Header setting %
+%%%%%%%%%%%%%%%%%%
+
+\usepackage{titlesec} % pretty headers
+\titleformat{\section}
+  {\normalfont\large\bfseries\color{Black}} % Formatting options
+  {\thesection}{1em}{}
+
+%%%%%%%%%%%%%%%%%%
+% Title settings %
+%%%%%%%%%%%%%%%%%%
+
+\title{\textcolor{NavyBlue}{\textbf{AWESOME_TITLE}}
+\author{\textbf{Pablo Alonso Ramos-Henao}}
+
+\setlength\parindent{10mm}
+
+%%%%%%%%%%%%
+%%% BODY %%%
+%%%%%%%%%%%%
+
+\begin{document}
+% Dark Mode - Comment the bottom 2 lines to get a normal white page
+%\pagecolor{black}
+%\color{white} % Set the default colour to white
+%
+%\pagenumbering{gobble} % Turns off page numbering
+%
+\maketitle
+{\color{NavyBlue} \rule{\linewidth}{0.5mm}} % Lines with colour options
+
+\section{SECTION_X}
+
+%\begin{displayquote}
+%    This is some text from a book.
+%\end{displayquote}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Implicit citations %
+%%%%%%%%%%%%%%%%%%%%%%
+
+%\nocite{Hunter:2007}
+% \nocite{Waskom2021}
+
+
+ %\printbibliography
+
+\end{document}
