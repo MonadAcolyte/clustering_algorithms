@@ -13,7 +13,7 @@ from sklearn.metrics import silhouette_score
 # Import the preprocessing modules
 from preprocessing import load_data, clean_data
 
-# Working env. defining
+# Working env. defining & importing and cleaning the data
 filepath = sys.argv[1]
 raw = load_data(filepath)
 cleaned = clean_data(raw)
@@ -32,7 +32,7 @@ def vectorise(sentences: list) -> tuple:
 
 matrix, vectorizer = vectorise(vectorised_sentences)
 
-# Silhouette analysis
+# Silhouette analysis (w/ K means)
 def silhouette_analysis(matrix, k_range: range) -> dict:
     """Compute silhouette scores for each K and plot the results."""
     scores = {}
