@@ -44,7 +44,7 @@
     eprint=false
 ]{biblatex}
 
-\addbibresource{ASSIGNMENT_1.bib} %Imports bibliography file
+%\addbibresource{ASSIGNMENT_1.bib} %Imports bibliography file
 \usepackage{csquotes} % used for block quotes
 
 %%%%%%%%%
@@ -73,8 +73,8 @@
 % Title settings %
 %%%%%%%%%%%%%%%%%%
 
-\title{\textcolor{NavyBlue}{\textbf{AWESOME_TITLE}}
-\author{\textbf{Pablo Alonso Ramos-Henao}}
+\title{\textcolor{Red}{\textbf{COMP527 - CA Assignment 2 - Preprocessing}}}
+\author{\textbf{Pablo Ramos - 201885602}}
 
 \setlength\parindent{10mm}
 
@@ -90,9 +90,17 @@
 %\pagenumbering{gobble} % Turns off page numbering
 %
 \maketitle
-{\color{NavyBlue} \rule{\linewidth}{0.5mm}} % Lines with colour options
+{\setlength{\parindent}{0mm}{\color{Red} \rule{\linewidth}{0.5mm}}} % Lines with colour options
 
-\section{SECTION_X}
+\section{Overview of the Pipeline}
+
+\texttt{clustering.py} calls the functions from \texttt{preprocessing.py} to call and clean the data and then uses TF-IDF vectorisation on the data to get a mathematical abstraction of the sentences. Latent Semantic Analysis was used to simplify the geometry of the resulting vector set. L2 normalisation was implemented as well.
+
+This final set was then used to get the silhouette analysis.
+
+\section{Term Frequency - Inverse Document Frequency (TF-IDF)}
+
+
 
 %\begin{displayquote}
 %    This is some text from a book.
