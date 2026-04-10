@@ -4,6 +4,9 @@ silhouette_plot.png
 label.txt
 __pycache__/*
 
+# LTex spell check
+.vscode/*
+
 # LaTex
 
 ## Core latex/pdflatex auxiliary files:
