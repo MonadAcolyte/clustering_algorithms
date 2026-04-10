@@ -90,7 +90,7 @@
 %\pagenumbering{gobble} % Turns off page numbering
 %
 \maketitle
-{\setlength{\parindent}{0mm}{\color{Red} \rule{\linewidth}{0.5mm}}} % Lines with colour options
+{\setlength{\parindent}{0mm}{\color{Black} \rule{\linewidth}{0.5mm}}} % Lines with colour options
 
 \section{Overview of the Pipeline}
 
@@ -100,7 +100,17 @@ This final set was then used to get the silhouette analysis.
 
 \section{Term Frequency - Inverse Document Frequency (TF-IDF)}
 
+TF-IDF is a statistical method that determines the relevance of a word in relation to the document it appears in. In this case, the term frequency for a single term t of a sentence s is described as:
 
+\begin{center}
+  $TF=\frac{\text{Frequency of }t}{\text{Count of unique terms in }s}$
+\end{center}
+
+{\setlength{\parindent}{0mm}The inverse document frequency is described mathematically as:}
+
+\begin{center}
+  $TF=\frac{\text{Total number of sentences}}{\text{Count of sentences with term }s}$
+\end{center}
 
 %\begin{displayquote}
 %    This is some text from a book.
