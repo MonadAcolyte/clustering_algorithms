@@ -91,17 +91,22 @@
 %
 \maketitle
 {\setlength\parindent{0mm} {\color{NavyBlue} \rule{\linewidth}{0.5mm}}} % Lines with colour options
-\section{About the data}
+\section{About the Data}
 
 The data has 1760 sentences from various texts. A quick read of some of them shows that it's snippets from Shakespeare's Coriolanus, a New York noir novel, food-related writing and other miscellaneous or nonsensical phrases.
 
-\section{Loading the data}
+\section{Loading the Data}
 
-The data was loaded as a Pandas data frame for easier clean-up and manipulation. With regex formatting the \texttt{clean\_sentence} function was defined to replace unwanted characters with whitespace. Then, a \texttt{clean\_data} function was created to apply the cleaning line by line, and label any empty lines with the word ``empty''. Both functions are applied to the data frame. To test the code, when run directly, \texttt{preprocessing.py} creates a .csv file with the outcome.
+The data was loaded as a Pandas data frame for easier clean-up and manipulation. 
 
-\section{Cleaning the data}
+\section{Cleaning the Data}
 
 The data will be vectorised with TF-IDF. For this to work properly, it is necessary to homogenise the text. Capitalisation needs to be removed, so words like 'sword', and 'Sword' are treated equally. Also, since this algorithm treats each sentence as a vector and each word as a component of said vector, punctuation and special characters become meaningless and need to be removed thusly.
+
+With regex formatting the \texttt{clean\_sentence} function was defined to replace unwanted characters with whitespace. Then, a \texttt{clean\_data} function was created to apply the cleaning line by line, and label any empty lines with the word ``empty''. Both functions are applied to the data frame. To test the code, when run directly, \texttt{preprocessing.py} creates a .csv file with the outcome.
+
+\section{Further Steps}
+Normalisation and LSA needed to be applied to the vectorised data. This was done within the actual modelling code, and will thus be explained in its documentation.
 
 %\begin{displayquote}
 %    This is some text from a book.
