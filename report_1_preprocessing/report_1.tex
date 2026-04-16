@@ -105,6 +105,10 @@ The data will be vectorised with TF-IDF. For this to work properly, it is necess
 
 With regex formatting the \texttt{clean\_sentence} function was defined to replace unwanted characters with whitespace. Then, a \texttt{clean\_data} function was created to apply the cleaning line by line, and label any empty lines with the word ``empty''. Both functions are applied to the data frame. To test the code, when run directly, \texttt{preprocessing.py} creates a .csv file with the outcome.
 
+\section{TF-IDF Parameters}
+
+Two parameters were set to further filter the vocabulary before vectorisation. \texttt{min\_df=2} discards any word appearing in fewer than two sentences, as such words are likely proper nouns, typos, or overly specific terms that would not generalise across clusters. \texttt{max\_features=4500} caps the vocabulary at the 4500 most frequent terms, keeping the resulting matrix computationally manageable and reducing noise from uncommon words.
+
 \section{Further Steps}
 Normalisation and LSA needed to be applied to the vectorised data. This was done within the actual modelling code, and will thus be explained in its documentation.
 
