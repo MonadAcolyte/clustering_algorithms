@@ -73,7 +73,7 @@
 % Title settings %
 %%%%%%%%%%%%%%%%%%
 
-\title{\textcolor{Red}{\textbf{COMP527 - CA Assignment 2 - Preprocessing}}}
+\title{\textcolor{Red}{\textbf{COMP527 - CA Assignment 2 - Clustering}}}
 \author{\textbf{Pablo Ramos - 201885602}}
 
 \setlength\parindent{10mm}
@@ -109,8 +109,41 @@ TF-IDF is a statistical method that determines the relevance of a word in relati
 {\setlength{\parindent}{0mm}The inverse document frequency is described mathematically as:}
 
 \begin{center}
-  $TF=\frac{\text{Total number of sentences}}{\text{Count of sentences with term }s}$
+  $IDF=\log\left(\frac{\text{Total number of sentences}}{\text{Count of sentences with term }t}\right)$
 \end{center}
+
+{\setlength{\parindent}{0mm}The final TF-IDF score for a term is the product of both values. Words that appear frequently in a sentence but rarely across the dataset score highly, making them strong signals for distinguishing clusters.}
+
+\section{Latent Semantic Analysis (LSA)}
+
+TF-IDF produces a high-dimensional sparse matrix, which is problematic for clustering due to the curse of dimensionality --- in high-dimensional spaces, distances between points tend to converge, making it harder to form well-separated clusters. LSA addresses this by applying Truncated Singular Value Decomposition (SVD) to reduce the matrix to a lower-dimensional dense representation, whilst preserving the most meaningful semantic relationships between terms.
+
+After experimenting with several values, \texttt{n\_components=10} was selected. Whilst this retains only 6.89\% of the explained variance, it produced the highest silhouette scores and, upon inspection, yielded semantically coherent clusters.
+
+\section{L2 Normalisation}
+
+L2 normalisation was applied to the LSA-reduced matrix, scaling each sentence vector to unit length. This ensures that K-Means computes distances based on the direction of vectors rather than their magnitude, preventing longer sentences from dominating the clustering simply due to having more terms.
+
+\section{Silhouette Analysis}
+
+Silhouette analysis was used to determine the optimal number of clusters $K$. For each data point, the silhouette coefficient $s$ is defined as:
+
+\begin{center}
+  $s = \frac{b - a}{\max(a, b)}$
+\end{center}
+
+{\setlength{\parindent}{0mm}where $a$ is the mean intra-cluster distance and $b$ is the mean distance to the nearest neighbouring cluster. The overall score for a given $K$ is the average across all points, with values ranging from $-1$ (poor) to $1$ (ideal). K-Means was run for $K = 1$ to $10$, with $K=1$ hardcoded to a score of 0 as the coefficient is undefined for a single cluster.}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{las_silhouette_plot_tuned.png}
+  \caption{Silhouette coefficients for $K = 1$ to $10$.}
+  \label{fig:silhouette}
+\end{figure}
+
+\section{Optimal $K$ and Results}
+
+As shown in Figure \ref{fig:silhouette}, silhouette scores increase consistently with $K$, peaking at $K=10$ with a score of 0.3097. This was selected as the optimal value. Inspection of the resulting clusters revealed genuine semantic structure --- Shakespeare dialogue was sub-clustered by character and scene, whilst reviews were grouped broadly by length and style. The relatively low absolute scores reflect the mixed nature of the dataset rather than a failure of the method.
 
 %\begin{displayquote}
 %    This is some text from a book.
