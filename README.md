@@ -1,2 +1,11 @@
 # clustering_algorithms
-This repository contains sample data that can be used to test different clustering models. The data cleaning and model creation; training are all here.
+
+This repository attempts to cluster a sentence data set.
+
+The available methods are:
+    - TF-IDF with KMEANS
+    - SBERT with UMAP
+
+LaTex reports are available on each.
+
+Everything here is based on the assignment details: 0_instructions.pdf
