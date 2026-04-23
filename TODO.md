@@ -19,10 +19,10 @@
 
 ### Q2
 - Third report, .pdf containing:
-    - Confusion matrices
-    - macro-averaged Precision
-    - Recall
-    - F-score
+    - Confusion matrices [x]
+    - macro-averaged Precision [x]
+    - Recall [x]
+    - F-score 
     *All for the cluster shown in 0_instructions.pdf*
 
 ### Q3
