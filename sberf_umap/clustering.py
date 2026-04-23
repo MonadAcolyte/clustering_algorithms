@@ -53,13 +53,13 @@ def preprocess(text):
     ]
     return " ".join(tokens) if tokens else "empty"
 
-print("Preprocessing...")
+print("Preprocessing... please wait")
 df["Cleaned"] = df["Sentence"].astype(str).apply(preprocess)
 sentences = df["Cleaned"].tolist()
 
 # SBERT embeddings
 
-print("SBERT embeddings are being generated... ... ...")
+print("SBERT embeddings are being generated... ... ... this may take an aeon or two")
 model      = SentenceTransformer(SBERT_MODEL)
 embeddings = model.encode(sentences, show_progress_bar=True)
 
@@ -75,7 +75,7 @@ reduced = reducer.fit_transform(embeddings)
 
 # Silhouette analysis
 
-print("Running silhouette analysis...")
+print("Running silhouette analysis... \n \n")
 scores    = {1: 0}  # K=1 is undefined for silhouette, hardcoded as 0
 for k in K_RANGE:
     kmeans = KMeans(n_clusters=k, random_state=RANDOM_STATE, n_init=KMEANS_INIT)
@@ -93,7 +93,7 @@ plt.title("Silhouette Analysis")
 plt.xticks(list(scores.keys()))
 plt.tight_layout()
 plt.savefig("silhouette_plot.png")
-print("Saved plot as: silhouette_plot.png")
+print("Saved plot as: silhouette_plot.png in the current directory")
 
 # Cluster with optimal K
 
@@ -109,4 +109,13 @@ with open("label.txt", "w") as f:
     for label in final_labels:
         f.write(f"{label + 1}\n")
 
-print("Saved label.txt")
+print("Saved label.txt, in the current directory")
+
+# Inspection snippet; I.E. *of the manual kind*
+
+print("\n ¡ Cluster Inspection ! \n")
+for cluster_id in range(1, optimal_k + 1):
+    indices = [i for i, label in enumerate(final_labels) if label + 1 == cluster_id]
+    print(f"\nCluster {cluster_id} ({len(indices)} sentences):")
+    for i in indices[:10]: # To show more sentences, increase * only * this number!
+        print(f"  - {sentences[i]}")
