@@ -87,10 +87,11 @@ for k in K_RANGE:
     scores[k] = score
     print(f"K={k}: silhouette score = {score:.4f}")
 
+plt.style.use("ggplot")
 plt.figure(figsize=(8, 4))
-plt.plot(list(scores.keys()), list(scores.values()), marker="o", color="steelblue")
+plt.plot(list(scores.keys()), list(scores.values()), marker="o", color="rebeccapurple")
 plt.grid(True, alpha=0.5)
-plt.xlabel("K")
+plt.xlabel("K (number of clusters)")
 plt.ylabel("Silhouette Coefficient")
 plt.title("Silhouette Analysis")
 plt.xticks(list(scores.keys()))

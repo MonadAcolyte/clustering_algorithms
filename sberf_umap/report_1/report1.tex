@@ -1,0 +1,132 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%
+% Basic packages %
+%%%%%%%%%%%%%%%%%%
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage[stretch = 25, shrink = 25, tracking=true, letterspace=30]{microtype}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ %total={150mm,257mm},
+ left=25mm,
+ right=25mm,
+ top=15mm,
+ } % Page Layout
+\usepackage[dvipsnames]{xcolor} % Colour
+\usepackage{amsmath} % Maths
+
+%%%%%%%%%%%%%%%%%%%
+% Tables, figures %
+%%%%%%%%%%%%%%%%%%%
+
+\usepackage{float}
+\usepackage{graphicx} % Imgages, figures
+\graphicspath{{./figures/}} % Set figure path
+
+\usepackage{booktabs} % Pretty tables
+
+%%%%%%%%%%%%%
+% Citations %
+%%%%%%%%%%%%%
+
+\usepackage[
+    backend=biber,
+    style=apa,
+    sortlocale=de_DE,
+    natbib=true,
+    url=false, 
+    doi=true,
+    eprint=false
+]{biblatex}
+
+%\addbibresource{ASSIGNMENT_1.bib} %Imports bibliography file
+\usepackage{csquotes} % used for block quotes
+
+%%%%%%%%%
+% Fonts %
+%%%%%%%%%
+
+%%% Helvetica:
+%\usepackage[scaled=0.95]{helvet} % Imports Helvetica, which is similar to Arial
+%\renewcommand{\rmdefault}{phv} % Use Helvetica
+
+%%% Atkinson Hyperlegible, nerdy font 
+%\usepackage[sfdefault]{atkinson} %% Option 'sfdefault' if the base
+%% font of the document is to be sans serif.
+%\usepackage[T1]{fontenc}
+
+%%%%%%%%%%%%%%%%%%
+% Header setting %
+%%%%%%%%%%%%%%%%%%
+
+\usepackage{titlesec} % pretty headers
+\titleformat{\section}
+  {\normalfont\large\bfseries\color{Black}} % Formatting options
+  {\thesection}{1em}{}
+
+%%%%%%%%%%%%%%%%%%
+% Title settings %
+%%%%%%%%%%%%%%%%%%
+
+\title{\textcolor{NavyBlue}{\textbf{COMP527 - CA Assignment 2 - Preprocessing}}}
+\author{\textbf{Pablo Ramos - 201885602}}
+
+\setlength\parindent{10mm}
+
+%=========%%%%%%%%%%%=========%
+%=========%% BODY %%%=========%
+%=========%%%%%%%%%%%=========%
+
+\begin{document}
+% Dark Mode - Comment the bottom 2 lines to get a normal white page
+%\pagecolor{black}
+%\color{white} % Set the default colour to white
+%
+%\pagenumbering{gobble} % Turns off page numbering
+%
+\maketitle
+{\setlength\parindent{0mm} {\color{NavyBlue} \rule{\linewidth}{0.5mm}}} % Lines with colour options
+\section{About the Data}
+
+The data has 1760 sentences from various texts. A quick read of some of them shows that it's snippets from Shakespeare's Coriolanus, a New York noir novel, food-related writing and other miscellaneous or nonsensical phrases.
+
+\section{Loading the Data}
+
+The data was loaded as a Pandas data frame using the \texttt{pandas} library. The file is tab-separated, and \texttt{quoting=csv.QUOTE\_NONE} was set to prevent quote characters within sentences from being misinterpreted as delimiters.
+
+\section{Cleaning the Data}
+
+Text was cleaned using a combination of regex, spaCy, and NLTK. First, literal \texttt{\textbackslash n} sequences and non-alphabetic characters were removed with regex, and the text was lowercased. SpaCy's \texttt{en\_core\_web\_sm} model was then used to lemmatise each token, which reduces words to their root form (I.E., no declensions, grammatical cases, \&c.). 
+
+The parser and named entity recognition components were disabled to speed up the script (not enough compute).
+
+NLTK's English stopword list was applied to discard common words with little semantic value. Tokens shorter than three characters were also removed. 
+
+Sentences left empty after cleaning were replaced with the placeholder "empty" to preserve row alignment with the original dataset.
+
+\section{Lemmatisation}
+
+Lemmatisation reduces vocabulary size and consolidates related word forms, improving the quality of sentence embeddings. Stopword removal ensures that high-frequency structural words do not dominate the representation. 
+
+These steps were picked because they produce cleaner input for the SBERT model, which will be covered in report 2.
+
+%\begin{displayquote}
+%    This is some text from a book.
+%\end{displayquote}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Implicit citations %
+%%%%%%%%%%%%%%%%%%%%%%
+
+%\nocite{Hunter:2007}
+% \nocite{Waskom2021}
+
+
+ %\printbibliography
+
+\end{document}
