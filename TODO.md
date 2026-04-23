@@ -33,4 +33,4 @@
 
 NOTE:
 
-Everything should work by running `python clustering.py`
+Everything should work by running `python clustering.py` or `python clustering.py <data>`
