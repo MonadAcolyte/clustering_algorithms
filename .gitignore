@@ -7,6 +7,9 @@ __pycache__/*
 # LTex spell check
 .vscode/*
 
+# Virtual environment
+.venv
+
 # LaTex
 
 ## Core latex/pdflatex auxiliary files:
