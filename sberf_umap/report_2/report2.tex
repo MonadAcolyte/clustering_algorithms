@@ -106,7 +106,7 @@ BERT is a kind of sentence transformer. It takes text as input and transforms it
 
 Because the vectors outputted by SBERT have a long length, and thus live on a very high dimensional space, for clustering to work properly it's necessary to map the vectors onto a lower dimensional space. To do that, UMAP was implemented.
 
-One of UMAP's hyperparameters is n components. Increasing it reduces the strenght of a single unique cluster and prioritises global grouping. Different values were tested (10, 20, 30 and 40), with 40 being the optimal one. A function to print the headers of the clusters on the best K was implemented. This allowed manually reading the results, and see if the clusters actually made any sense.
+One of UMAP's hyperparameters is n components. Increasing it reduces the strength of a single unique cluster and prioritises global grouping. Different values were tested (10, 20, 30 and 40), with 40 being the optimal one. A function to print the headers of the clusters on the best K was implemented. This allowed manually reading the results, and see if the clusters actually made any sense.
 
 \section{K-Means Clustering}
 K means is a clustering algorithm that can be trained without any labels on the data. Because the given dataset has raw text sentences with no additional context, this method is adequate for the clustering.
