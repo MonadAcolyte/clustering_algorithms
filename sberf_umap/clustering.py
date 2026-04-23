@@ -14,10 +14,13 @@ import umap
 
 # Configurations, hyperparams, &c.
 
+# Configs
 DEFAULT_DATA_PATH = "data.txt"
 SBERT_MODEL       = "all-MiniLM-L6-v2" # I picked this one because it's light enough to run on my machine
-UMAP_COMPONENTS   = 10
-UMAP_NEIGHBOURS   = 15
+
+# Hypers
+UMAP_COMPONENTS   = 10 # Increasing this lowers silh. score too much
+UMAP_NEIGHBOURS   = 40 # 40 is the perfect cooking point... A bit larger to force global in favour of local (manual inspection reveals a weird university cluster with strong signal. :D )
 K_RANGE           = range(2, 11)
 KMEANS_INIT       = 25
 RANDOM_STATE      = 2112
@@ -117,5 +120,5 @@ print("\n ¡ Cluster Inspection ! \n")
 for cluster_id in range(1, optimal_k + 1):
     indices = [i for i, label in enumerate(final_labels) if label + 1 == cluster_id]
     print(f"\nCluster {cluster_id} ({len(indices)} sentences):")
-    for i in indices[:10]: # To show more sentences, increase * only * this number!
+    for i in indices[:8]: # To show more sentences, increase * only * this number! Else it shows empty clusters & such.
         print(f"  - {sentences[i]}")
